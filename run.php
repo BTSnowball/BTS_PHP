@@ -1,0 +1,19 @@
+<?php
+/*
+欢迎使用BTSnowball_PHP框架！
+林友哲（393562235@qq.com)版权所有
+尚未完工
+*/
+session_start();
+include_once('./config/bts_cf_php.php');
+include_once('./FucHub/bts_str_fh.php');
+include_once('./FucHub/bts_bas_fh.php');
+include_once('./FucHub/bts_client_fh.php');
+if($bts_mysqli_d=='1'){
+	include_once('./config/bts_cf_mysqli.php');
+	include_once('./run/mysqli.php');
+	include_once('./FucHub/bts_mysqli_fh.php');
+}
+if(!defined('IN_BTSPHP')){
+define('IN_BTSPHP', TRUE);
+}
