@@ -1,9 +1,4 @@
 <?php
-/*
-欢迎使用BTSnowball_PHP框架！
-林友哲（393562235@qq.com)版权所有
-尚未完工
-*/
 //数据安全处理函数
 function bts_mysqli_VSafe($str,$bts_link_my_i,$safe=1){
 	    if($safe!=0){

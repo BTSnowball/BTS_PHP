@@ -1,9 +1,4 @@
 <?php
-/*
-欢迎使用BTSnowball_PHP框架！
-林友哲（393562235@qq.com)版权所有
-尚未完工
-*/
 //获取操作系统信息
 function bts_bas_getOs(){
    if(!empty($_SERVER['HTTP_USER_AGENT'])){
@@ -97,4 +92,41 @@ $domain = $matchs ['0'];
 $domain = $host; 
 } 
 return $domain; 
+}
+function ACurlKey($url){
+$urlheadar=explode(':',$url);
+if(!isset($urlheadar[1])){
+	$url='http://'.$url;
+	$urlhead='http';
+}else{
+	$urlhead=$urlheadar[0];
+}
+switch($urlhead){
+	case 'http':
+		$doc=1;
+	break;
+	case 'https':
+		$doc=2;
+	break;
+	default:
+		$doc=1;
+	    $url='http://'.$url;
+	break;
+}
+$curl = curl_init();
+// 设置你需要抓取的URL
+curl_setopt($curl, CURLOPT_URL, $url);
+// 设置header
+curl_setopt($curl, CURLOPT_HEADER, 0);
+// 设置cURL 参数，要求结果保存到字符串中还是输出到屏幕上。
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+if($doc==2){
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE); // https请求 不验证证书和hosts
+curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+}
+// 运行cURL，请求网页
+$data = curl_exec($curl);
+// 关闭URL请求
+curl_close($curl);
+return trim($data);
 }

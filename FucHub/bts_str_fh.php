@@ -1,9 +1,4 @@
 <?php
-/*
-欢迎使用BTSnowball_PHP框架！
-林友哲（393562235@qq.com)版权所有
-尚未完工
-*/
 //html标签删除函数
 function bts_str_delhtml($str){
     $html_string = array('&amp;', '&nbsp;', '"', "'", '<', '>', '\t', '\r');
@@ -202,4 +197,14 @@ if ( !$encode == $ttyp ){
 $str = iconv($ttyp,$encode,$str);
 }
 return $str;
+}
+function bts_str_FenGe($str,$ws,$fg='|')
+{
+	$hello = explode($fg,$str);
+	return $hello[$ws];
+}
+function  bts_str_FenGeS($str,$fg='|')
+{
+	$hello = explode($fg,$str);
+	return $hello;
 }
