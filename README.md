@@ -1,5 +1,5 @@
 # BTS_PHP
-BTS_PHP V0.1.0 -一个开源的快速的过程化亲函数的PHP框架
+BTS_PHP V0.1.1 -一个开源的快速的过程化亲函数的PHP框架
 #NOTIC
 任何使用BTS_PHP搭建的程序必须在运行时的界面版权位置或明显标记本程序使用BTS_PHP开发（Powered by BTS_PHP) 得到作者特殊授权的除外
 #V0.1.0
