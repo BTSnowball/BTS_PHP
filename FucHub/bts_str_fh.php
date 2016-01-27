@@ -170,7 +170,7 @@ $encode = mb_detect_encoding( $str, array('ASCII','UTF-8','GB2312','GBK','BIG5')
 $encode=$typ;
 }
 if ( !$encode =='UTF-8' ){
-$str = iconv('UTF-8',$encode,$str);
+$str = iconv($encode,'UTF-8',$str);
 }
 return $str;
 }
@@ -182,7 +182,19 @@ $encode = mb_detect_encoding( $str, array('ASCII','UTF-8','GB2312','GBK','BIG5')
 $encode=$typ;
 }
 if ( !$encode =='GBK' ){
-$str = iconv('GBK',$encode,$str);
+$str = iconv($encode,'GBK',$str);
+}
+return $str;
+}
+function bts_str_GB2312($str,$typ=null)
+{
+if($typ==null){ 
+$encode = mb_detect_encoding( $str, array('ASCII','UTF-8','GB2312','GBK','BIG5'));
+}else{
+$encode=$typ;
+}
+if ( !$encode =='GB2312' ){
+$str = iconv($encode,'GB2312',$str);
 }
 return $str;
 }
@@ -194,7 +206,7 @@ $encode = mb_detect_encoding( $str, array('ASCII','UTF-8','GB2312','GBK','BIG5')
 $encode=$typ;
 }
 if ( !$encode == $ttyp ){
-$str = iconv($ttyp,$encode,$str);
+$str = iconv($encode,$ttyp,$str);
 }
 return $str;
 }

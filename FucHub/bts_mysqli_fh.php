@@ -72,8 +72,15 @@ function bts_mysqli_insert($tbname,$key=null,$values,$safe=1,$linki='btsnone'){
 		$values=bts_mysqli_VSafe($values,$bts_link_my_i,$safe);
 		$sql=$sql.$values."')";
 	}
-	echo $sql;
-	mysqli_query($bts_link_my_i,$sql);
+	if(mysqli_query($bts_link_my_i,$sql)){
+		$res[0]=true;
+		$res[1]=mysqli_insert_id($bts_link_my_i);
+		return $res;
+	}else{
+		$res[0]=false;
+		$res[1]="-1";
+		return $res;
+	}
 }
 //数据删除函数
 function bts_mysqli_delete($tbname,$key,$values,$safe=1,$linki='btsnone'){
