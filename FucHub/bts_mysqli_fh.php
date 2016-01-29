@@ -171,7 +171,7 @@ function bts_mysqli_select($tbname,$key,$values,$safe=1,$linki='btsnone',$sk='*'
 	}
 	if($order!=null){
 		$order=bts_mysqli_VSafe($order,$bts_link_my_i,$safe);
-		$sql=$sql.' ORDER BY'.$tbname.$order.' ';
+		$sql=$sql.' ORDER BY '.'`'.$tbname.'`.`'.$order.'` ';
 		if($pl==1){
 			$pl='ASC';
 		}else{
@@ -203,13 +203,15 @@ function bts_mysqli_nf($res){
 	return $res;
 }
 //结果
-function bts_mysqli_fo($res,$key=null){
-	if($info=mysqli_fetch_object($res)){
+function bts_mysqli_fo($resa,$key=null){
+	if($info=mysqli_fetch_object($resa)){
 	if($key!=null){
 		$res=$info->$key;
 		return $res;
 	}
-	return $info;
+	$res[0] = $resa;
+	$res[1] = $info;
+	return $res;
 	}else{
 	return False;
 	}
