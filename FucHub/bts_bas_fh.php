@@ -1,4 +1,10 @@
 <?php
+/*
+V0.2.0
+欢迎使用BTSnowball_PHP框架！
+林友哲（393562235@qq.com)版权所有
+尚未完工
+*/
 //获取操作系统信息
 function bts_bas_getOs(){
    if(!empty($_SERVER['HTTP_USER_AGENT'])){
@@ -93,7 +99,8 @@ $domain = $host;
 } 
 return $domain; 
 }
-function ACurlKey($url){
+function ACurlKey($url,$timeout=1){
+$timeout=intval($timeout);
 $urlheadar=explode(':',$url);
 if(!isset($urlheadar[1])){
 	$url='http://'.$url;
@@ -119,7 +126,7 @@ curl_setopt($curl, CURLOPT_URL, $url);
 // 设置header
 curl_setopt($curl, CURLOPT_HEADER, 0);
 // 设置cURL 参数，要求结果保存到字符串中还是输出到屏幕上。
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, $timeout);
 if($doc==2){
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE); // https请求 不验证证书和hosts
 curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
@@ -130,3 +137,10 @@ $data = curl_exec($curl);
 curl_close($curl);
 return trim($data);
 }
+function bts_bas_valueref($arr){ 
+        $refs = array(); 
+        foreach($arr as $key => $value) 
+        $refs[$key] = &$arr[$key]; 
+        return $refs; 
+
+    }

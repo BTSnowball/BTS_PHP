@@ -1,4 +1,10 @@
 <?php
+/*
+V0.2.0
+欢迎使用BTSnowball_PHP框架！
+林友哲（393562235@qq.com)版权所有
+尚未完工
+*/
 //html标签删除函数
 function bts_str_delhtml($str){
     $html_string = array('&amp;', '&nbsp;', '"', "'", '<', '>', '\t', '\r');
@@ -219,4 +225,35 @@ function  bts_str_FenGeS($str,$fg='|')
 {
 	$hello = explode($fg,$str);
 	return $hello;
+}
+function bts_is_not_json($str){
+	return is_null(json_decode($str));
+}
+function bts_is_json($str){  
+    if(is_null(json_decode($str))){
+		return false;
+	}else{
+		return true;
+	}
+}
+function bts_is_sjson($str) { 
+ $str=json_decode($str);
+ return (json_last_error() == JSON_ERROR_NONE);
+}
+function bts_str_sub($str,$le,$start=0,$encoding="utf8"){
+	if(function_exists("mb_string")){
+		$res=mb_substr($str,$start,$le,$encoding);
+	}else{
+		$res=substr($str,$start,$le);
+	}
+	return $res;
+}
+function bts_str_iswhat($value){
+	if(is_int($value)){
+		return 'i';
+	}elseif(is_double($value)){
+		return 'd';
+	}else{
+		return 's';
+	}
 }
